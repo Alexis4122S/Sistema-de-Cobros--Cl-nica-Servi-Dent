@@ -1,0 +1,34 @@
+CREATE TABLE "TPaciente" (
+	"CI"	TEXT NOT NULL UNIQUE,
+	"NombreCompleto"	TEXT,
+	"Telefono"	TEXT,
+	"Edad"	INTEGER,
+	PRIMARY KEY("CI")
+);
+
+CREATE TABLE "TServicio" (
+	"ID_Servicio"	INTEGER NOT NULL,
+	"MontoTotal"	TEXT,
+	"Detalle"	TEXT,
+	"Fecha"	DATE,
+	"CI"	TEXT,
+	FOREIGN KEY("CI") REFERENCES "TPaciente"("CI") ON DELETE CASCADE ON UPDATE CASCADE,
+	PRIMARY KEY("ID_Servicio" AUTOINCREMENT)
+);
+
+CREATE TABLE "TPagos" (
+	"ID_Pago"	INTEGER,
+	"Fecha"	TEXT,
+	"Monto"	TEXT,
+	"CI"	TEXT,
+	FOREIGN KEY("CI") REFERENCES "TPaciente"("CI") ON DELETE CASCADE ON UPDATE CASCADE,
+	PRIMARY KEY("ID_Pago" AUTOINCREMENT)
+);
+
+CREATE INDEX "IXFK_TPagos_TPaciente" ON "TPagos" (
+	"CI"
+);
+
+CREATE INDEX "IXFK_TServicio_TPaciente" ON "TServicio" (
+	"CI"
+);
