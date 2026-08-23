@@ -22,6 +22,10 @@ BDPaciente.db
 *.db-shm
 *.db-journal
 
+# Project-specific generated/binary assets
+imagenes/
+BDPaciente.sqbpro
+
 # OS files
 Thumbs.db
 .DS_Store
